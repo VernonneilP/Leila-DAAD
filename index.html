@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAAD Germany Scholarship Checklist — Leila Ghez Torda</title>
+
+  <!-- Google Fonts: Lora (warm editorial serif) and DM Sans (clean readable sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Strict Design Tokens: Limited Palette & 3 Disciplined Font Sizes -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FBF7F5',      /* Warm off-white / cream paper background */
+            blush: '#F4E7EA',      /* Soft petal blush hover & completed tint */
+            rose: '#C85A77',       /* Primary tulip pink accent */
+            roseDeep: '#AB4661',   /* Hover state for dusty rose actions */
+            sage: '#46604E',       /* Muted botanical stem/leaf green */
+            charcoal: '#241E20',   /* Primary deep warm charcoal text */
+            taupe: '#6E6265',      /* Muted secondary taupe-gray text */
+            hairline: '#E6D5D9'    /* 1px soft rose-gray hairline divider */
+          },
+          fontFamily: {
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          fontSize: {
+            /* Strictly 3 font sizes across the entire interface */
+            display: ['1.625rem', { lineHeight: '1.25', letterSpacing: '-0.015em' }],
+            heading: ['1.125rem', { lineHeight: '1.35', letterSpacing: '-0.01em' }],
+            body: ['0.9375rem', { lineHeight: '1.55' }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base stationery styling & anti-aliasing */
+    html, body {
+      background-color: #FBF7F5;
+      color: #241E20;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Custom tactile checkbox */
+    .tulip-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border: 1.5px solid #C85A77;
+      border-radius: 4px;
+      background-color: #FBF7F5;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: background-color 160ms ease, border-color 160ms ease;
+      margin-top: 3px;
+    }
+
+    .tulip-checkbox:hover {
+      background-color: #F4E7EA;
+    }
+
+    .tulip-checkbox:focus-visible {
+      outline: 2px solid #C85A77;
+      outline-offset: 2px;
+    }
+
+    .tulip-checkbox::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      transform: scale(0);
+      transition: transform 140ms ease-in-out;
+      background-color: #FBF7F5;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+    .tulip-checkbox:checked {
+      background-color: #C85A77;
+      border-color: #C85A77;
+    }
+
+    .tulip-checkbox:checked::before {
+      transform: scale(1);
+    }
+
+    /* Subtle horizontal scroll hide for filter tabs on narrow screens */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Smooth progress bar fill */
+    .progress-fill {
+      transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Clean Print Stylesheet for physical planner printout */
+    @media print {
+      body {
+        background-color: #FFFFFF !important;
+        color: #1A1A1A !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-full {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .task-tip-panel {
+        display: block !important;
+      }
+      .tulip-checkbox {
+        border: 1.5px solid #46604E !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .tulip-checkbox:checked {
+        background-color: #C85A77 !important;
+        border-color: #C85A77 !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-paper text-charcoal min-h-screen selection:bg-blush selection:text-charcoal">
+
+  <!-- Main Single-Column Editorial Planner Container (max-width 740px) -->
+  <main class="print-full max-w-[740px] mx-auto px-5 sm:px-8 py-8 sm:py-12">
+
+    <!-- Header Section with Botanical Tulip Illustration & Monogram -->
+    <header class="pb-6 border-b border-hairline">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <!-- Custom Minimalist Pink Tulip & Sage Stem Botanical Illustration -->
+        <div class="flex items-center gap-3.5">
+          <svg width="54" height="58" viewBox="0 0 64 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="shrink-0">
+            <!-- Muted Sage Green Stems & Leaves -->
+            <path d="M24 64C24 51 22 40 20 29" stroke="#46604E" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M35 64C35 49 37 36 39 23" stroke="#46604E" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M45 64C45 53 47 44 49 35" stroke="#46604E" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Slender Botanical Leaves -->
+            <path d="M23 53C15 49 11 41 13 33C19 37 22 44 23 53Z" fill="#46604E" fill-opacity="0.16" stroke="#46604E" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M36 49C44 44 50 38 51 29C43 32 38 40 36 49Z" fill="#46604E" fill-opacity="0.16" stroke="#46604E" stroke-width="1.4" stroke-linejoin="round"/>
+
+            <!-- Left Tulip Bloom (Dusty Rose) -->
+            <path d="M13 21C13 15 16.5 11 20 11C23.5 11 27 15 27 21C27 25.5 23.8 29 20 29C16.2 29 13 25.5 13 21Z" fill="#F4E7EA" stroke="#C85A77" stroke-width="1.5"/>
+            <path d="M13 20C14.5 16 17.5 14 20 11C22.5 14 25.5 16 27 20" stroke="#C85A77" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M16.5 28.2C16.5 23 18 18 20 14.5C22 18 23.5 23 23.5 28.2" fill="#C85A77" fill-opacity="0.24" stroke="#C85A77" stroke-width="1.3"/>
+
+            <!-- Center Tall Tulip Bloom (Primary Dusty Rose) -->
+            <path d="M31.5 15.5C31.5 9 35.2 4.5 39 4.5C42.8 4.5 46.5 9 46.5 15.5C46.5 20.2 43.2 23.5 39 23.5C34.8 23.5 31.5 20.2 31.5 15.5Z" fill="#C85A77" fill-opacity="0.22" stroke="#C85A77" stroke-width="1.5"/>
+            <path d="M35 23C35 17 36.8 11.5 39 7.5C41.2 11.5 43 17 43 23" fill="#C85A77" fill-opacity="0.35" stroke="#C85A77" stroke-width="1.4"/>
+            <path d="M31.8 13.5C33.5 11 35.2 9.5 36.8 8.5" stroke="#C85A77" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M46.2 13.5C44.5 11 42.8 9.5 41.2 8.5" stroke="#C85A77" stroke-width="1.3" stroke-linecap="round"/>
+
+            <!-- Right Smaller Tulip Bud -->
+            <path d="M43.5 28.5C43.5 23.8 46.2 20.5 49 20.5C51.8 20.5 54.5 23.8 54.5 28.5C54.5 32.2 52 35 49 35C46 35 43.5 32.2 43.5 28.5Z" fill="#F4E7EA" stroke="#C85A77" stroke-width="1.4"/>
+            <path d="M46.2 34.4C46.2 30 47.5 26 49 23C50.5 26 51.8 30 51.8 34.4" fill="#C85A77" fill-opacity="0.25" stroke="#C85A77" stroke-width="1.25"/>
+          </svg>
+
+          <div>
+            <p class="font-serif italic text-body text-sage">Academic &amp; Career Planner</p>
+            <h1 class="font-serif font-semibold text-display text-charcoal mt-0.5">
+              DAAD Germany Scholarship Checklist
+            </h1>
+          </div>
+        </div>
+
+        <!-- Subtle Editorial Monogram Crest -->
+        <div class="shrink-0 border border-hairline rounded px-3 py-1.5 text-right bg-paper">
+          <span class="font-serif font-medium text-body text-charcoal block">LGT</span>
+          <span class="text-body text-taupe block">NU MOA &rsquo;25</span>
+        </div>
+      </div>
+
+      <!-- Personalized Profile Line -->
+      <p class="text-body text-taupe mb-4">
+        Prepared for <span class="text-charcoal font-medium">Leila Ghez Torda</span>
+        <span class="text-hairline mx-2">|</span>
+        BS Psychology &rsquo;25, NU MOA
+        <span class="text-hairline mx-2">|</span>
+        HR Officer
+      </p>
+
+      <!-- Concise Profile Track Note -->
+      <div class="bg-blush/65 border-l-2 border-sage px-4 py-3 rounded-r text-body text-charcoal">
+        <p>
+          <span class="font-medium text-sage">Application Track Note:</span>
+          Your 2025 BS Psychology degree from National University (NU MOA) combined with 1+ year of HR Officer experience aligns directly with English-taught Master&rsquo;s programs in Organizational Psychology, Human Resource Management, and Business Psychology at tuition-free German public universities. For <span class="font-medium">DAAD EPOS</span> (Development-Related Postgraduate Courses), note that applicants must hold at least <span class="font-medium">2 full years</span> of relevant post-graduation work experience by the application deadline, whereas general German Master&rsquo;s admissions welcome candidates with 1+ year of HR practice right away.
+        </p>
+      </div>
+    </header>
+
+    <!-- Overall Progress Tracker -->
+    <section aria-label="Overall application progress" class="py-5 border-b border-hairline">
+      <div class="flex items-baseline justify-between gap-4 mb-2">
+        <span class="text-body font-medium text-charcoal">Application Readiness</span>
+        <span id="progress-label" class="text-body text-taupe tabular-nums">0 of 16 tasks completed &middot; 0%</span>
+      </div>
+      <div class="w-full h-1.5 bg-hairline rounded-full overflow-hidden">
+        <div id="progress-bar" class="progress-fill h-full bg-rose rounded-full" style="width: 0%;"></div>
+      </div>
+    </section>
+
+    <!-- Category Filter Tabs (Clean Underlined Text Tabs) -->
+    <nav aria-label="Checklist phases" class="no-print border-b border-hairline overflow-x-auto no-scrollbar">
+      <div id="filter-tabs" class="flex items-center gap-5 sm:gap-6 min-w-max">
+        <button type="button" data-filter="all" class="filter-tab py-3 text-body font-medium text-charcoal border-b-2 border-rose transition-colors cursor-pointer">
+          All Steps
+        </button>
+        <button type="button" data-filter="phase-01" class="filter-tab py-3 text-body text-taupe hover:text-charcoal border-b-2 border-transparent transition-colors cursor-pointer">
+          01 Research &amp; Eligibility
+        </button>
+        <button type="button" data-filter="phase-02" class="filter-tab py-3 text-body text-taupe hover:text-charcoal border-b-2 border-transparent transition-colors cursor-pointer">
+          02 NU MOA &amp; HR Documents
+        </button>
+        <button type="button" data-filter="phase-03" class="filter-tab py-3 text-body text-taupe hover:text-charcoal border-b-2 border-transparent transition-colors cursor-pointer">
+          03 Language &amp; References
+        </button>
+        <button type="button" data-filter="phase-04" class="filter-tab py-3 text-body text-taupe hover:text-charcoal border-b-2 border-transparent transition-colors cursor-pointer">
+          04 Portal &amp; Visa
+        </button>
+      </div>
+    </nav>
+
+    <!-- Interactive Checklist Container -->
+    <section id="checklist-container" aria-label="Scholarship checklist items" class="divide-y divide-hairline">
+      <!-- Phases and tasks are rendered dynamically via JavaScript -->
+    </section>
+
+    <!-- Add a Custom Task Section -->
+    <section aria-label="Add custom task" class="no-print py-6 border-t border-hairline">
+      <h2 class="font-serif font-medium text-heading text-charcoal mb-3">Add a Personal Task or Deadline</h2>
+      <form id="custom-task-form" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+        <label for="custom-task-input" class="sr-only">Task description</label>
+        <input
+          id="custom-task-input"
+          type="text"
+          placeholder="e.g., Request VPD from uni-assist for LMU Munich..."
+          class="flex-1 bg-paper border border-hairline rounded px-3.5 py-2.5 text-body text-charcoal placeholder:text-taupe/70 focus:outline-none focus:border-rose transition-colors"
+          required
+        />
+        <label for="custom-task-phase" class="sr-only">Select phase</label>
+        <select
+          id="custom-task-phase"
+          class="bg-paper border border-hairline rounded px-3 py-2.5 text-body text-charcoal focus:outline-none focus:border-rose transition-colors cursor-pointer"
+        >
+          <option value="phase-01">01 Research</option>
+          <option value="phase-02">02 Documents</option>
+          <option value="phase-03">03 References</option>
+          <option value="phase-04">04 Portal &amp; Visa</option>
+        </select>
+        <button
+          type="submit"
+          class="bg-rose hover:bg-roseDeep text-paper font-medium text-body px-4 py-2.5 rounded transition-colors cursor-pointer shrink-0"
+        >
+          Add Task
+        </button>
+      </form>
+    </section>
+
+    <!-- Personal Scratchpad Notes Section -->
+    <section aria-label="Personal notes and university shortlist" class="py-6 border-t border-hairline">
+      <div class="flex items-baseline justify-between gap-4 mb-2.5">
+        <label for="scratchpad-notes" class="font-serif font-medium text-heading text-charcoal">
+          Personal Notes &amp; Target University Shortlist
+        </label>
+        <span id="notes-status" class="no-print text-body text-sage">Saved on this device</span>
+      </div>
+      <textarea
+        id="scratchpad-notes"
+        rows="4"
+        placeholder="Jot down target German universities (e.g., Ruhr-Universitat Bochum, TU Dresden, University of Mannheim), portal deadlines, or NU MOA Registrar follow-up dates..."
+        class="w-full bg-paper border border-hairline rounded p-3.5 text-body text-charcoal placeholder:text-taupe/70 focus:outline-none focus:border-rose focus:bg-blush/25 transition-colors resize-y"
+      ></textarea>
+    </section>
+
+    <!-- Footer Controls: Print & Reset with Inline Confirmation -->
+    <footer class="no-print pt-6 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <p class="text-body text-taupe">
+        Tailored for Leila Ghez Torda &middot; Progress saves automatically in your browser.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-2.5">
+        <button
+          id="print-btn"
+          type="button"
+          class="border border-hairline hover:bg-blush text-charcoal text-body font-medium px-3.5 py-2 rounded transition-colors cursor-pointer"
+        >
+          Print Checklist
+        </button>
+
+        <!-- Inline Reset Progress Flow (No browser confirm/alert) -->
+        <div id="reset-wrapper" class="flex items-center gap-2">
+          <button
+            id="reset-trigger-btn"
+            type="button"
+            class="border border-hairline hover:border-rose hover:text-rose text-taupe text-body px-3.5 py-2 rounded transition-colors cursor-pointer"
+          >
+            Reset Progress
+          </button>
+
+          <div id="reset-confirm-group" class="hidden items-center gap-2 bg-blush px-3 py-1.5 rounded border border-hairline">
+            <span class="text-body text-charcoal">Clear all checks?</span>
+            <button
+              id="reset-confirm-btn"
+              type="button"
+              class="text-body font-medium text-rose hover:text-roseDeep underline underline-offset-2 cursor-pointer"
+            >
+              Yes, reset
+            </button>
+            <button
+              id="reset-cancel-btn"
+              type="button"
+              class="text-body text-taupe hover:text-charcoal cursor-pointer ml-1"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Application Logic & LocalStorage Persistence -->
+  <script>
+    (function () {
+      const STORAGE_KEY = 'leila_daad_checklist_v1';
+
+      // Structured Phases & Default Checklist Tasks tailored to Leila's NU MOA + HR Officer profile
+      const PHASES = [
+        {
+          id: 'phase-01',
+          number: '01',
+          title: 'Research & Eligibility',
+          tasks: [
+            {
+              id: 't-01',
+              text: "Search the DAAD International Programmes database for English-taught Master's degrees (Work & Organizational Psychology, HRM, Business Psychology, or Development Studies).",
+              tip: "Filter by Master's degree, English language of instruction, and No tuition fees (most German public universities charge only a semester contribution of roughly EUR 150 to 350). Review each program's module handbook to check required undergraduate credits in statistics or empirical research methods from your BS Psychology degree."
+            },
+            {
+              id: 't-02',
+              text: "Verify National University (NU MOA) and BS Psychology recognition on the German Anabin database (confirm H+ institution status).",
+              tip: "Visit anabin.kmk.org and search under Institutionen for National University (Manila / Pasay) to confirm its H+ classification, meaning your Philippine degree is recognized in Germany. Save or print PDF copies of both the institution entry and degree equivalence record for uni-assist and visa filing."
+            },
+            {
+              id: 't-03',
+              text: "Check work experience timelines for target scholarships (confirm whether hitting the 2-year full-time HR experience mark for DAAD EPOS or applying to general Master's admissions).",
+              tip: "Because you graduated in 2025 and have 1+ year of HR Officer experience, count your exact months of full-time post-graduation employment up to the application deadline. DAAD EPOS (Development-Related Postgraduate Courses) strictly requires 2 full years of relevant work experience at application time; if you are under 24 months, you can apply to tuition-free German Master's programs now or align your EPOS submission once you reach 24 months."
+            },
+            {
+              id: 't-04',
+              text: "Shortlist 3 to 5 target universities and record exact DAAD Portal vs. university portal deadlines (typically August to October for Winter intake).",
+              tip: "Many DAAD EPOS programs require dual submission: one application on the DAAD Portal and another directly to the university (or via uni-assist) between August and October for the following year's Winter Semester. Note whether each university requires a Preliminary Review Documentation (VPD) from uni-assist, which takes 4 to 6 weeks."
+            }
+          ]
+        },
+        {
+          id: 'phase-02',
+          number: '02',
+          title: 'Academic & HR Experience Documents',
+          tasks: [
+            {
+              id: 't-05',
+              text: "Request Official Transcript of Records (TOR) and Bachelor's Diploma from the NU MOA Registrar, including an official grading system scale.",
+              tip: "Request multiple certified true copies from the NU MOA Registrar's Office early. Ensure the reverse page or an accompanying Registrar certification clearly explains National University's grading scale so German admissions committees and uni-assist can accurately convert your grades via the Modified Bavarian Formula."
+            },
+            {
+              id: 't-06',
+              text: "Obtain a Certificate of Employment (COE) and detailed HR Job Description on official company letterhead with wet signature and employment dates.",
+              tip: "For DAAD EPOS and HRM Master's admissions, a standard COE listing only dates and job title is usually insufficient. Request a signed and stamped document on official company letterhead detailing your exact start date, full-time status, and HR responsibilities (such as talent acquisition, employee relations, training programs, or HR policy)."
+            },
+            {
+              id: 't-07',
+              text: "Format a clean, reverse-chronological Curriculum Vitae (Europass or academic CV format, maximum 2 to 3 pages).",
+              tip: "Use the Europass CV format or a clean single-column academic layout. Lead with your HR Officer role and measurable workplace contributions, followed by your BS Psychology degree from NU MOA, psychology internship hours, and undergraduate thesis. Sign and date the final page if specified by DAAD."
+            },
+            {
+              id: 't-08',
+              text: "Draft a tailored Letter of Motivation (1 to 2 pages connecting BS Psychology from NU MOA and HR Officer work to study goals in Germany).",
+              tip: "Keep the letter strictly within 1 to 2 pages. Connect four clear points: your academic grounding in BS Psychology at NU MOA, practical organizational challenges observed as an HR Officer, why the specific German university curriculum matches your goals, and how you will apply the degree in your future career."
+            }
+          ]
+        },
+        {
+          id: 'phase-03',
+          number: '03',
+          title: 'Language Proof & Recommendations',
+          tasks: [
+            {
+              id: 't-09',
+              text: "Check English proficiency rules for each shortlisted program (book IELTS Academic or TOEFL iBT, or request a Certificate of Medium of Instruction from NU MOA if accepted).",
+              tip: "Most English-taught Master's programs require IELTS Academic (typically Band 6.5 overall) or TOEFL iBT (typically 88 to 95). While select universities accept a Certificate of Medium of Instruction (MOI) from NU MOA confirming your BS Psychology courses were taught in English, sitting for IELTS or TOEFL keeps all university and scholarship options open."
+            },
+            {
+              id: 't-10',
+              text: "Request 1 academic Letter of Recommendation from an NU MOA Psychology professor (signed and dated on university letterhead).",
+              tip: "Contact your thesis adviser or a Psychology faculty member at NU MOA at least 4 to 6 weeks ahead of your deadline. Share your updated CV, TOR, and motivation letter draft so they can highlight your analytical skills, research rigor, and readiness for postgraduate study."
+            },
+            {
+              id: 't-11',
+              text: "Request 1 professional Letter of Recommendation from an HR manager or supervisor highlighting workplace impact and leadership.",
+              tip: "Ask your direct HR Manager or Department Head to issue a signed and dated reference letter on company letterhead. Strong professional letters highlight your reliability, stakeholder communication, problem-solving in HR operations, and leadership potential."
+            },
+            {
+              id: 't-12',
+              text: "Complete the official DAAD Letter of Recommendation form if required by the chosen scholarship track.",
+              tip: "Certain DAAD scholarship tracks require referees to complete a standardized DAAD recommendation form (generated via the DAAD Portal or provided as a fillable PDF) alongside or in place of a free-form letter. Check whether each referee must sign across a sealed envelope flap or submit via a portal link."
+            }
+          ]
+        },
+        {
+          id: 'phase-04',
+          number: '04',
+          title: 'Submission, Apostille & Embassy Steps',
+          tasks: [
+            {
+              id: 't-13',
+              text: "Authenticate academic records (TOR and Diploma) via DFA Apostille for university enrollment and uni-assist verification.",
+              tip: "Book an appointment with the Department of Foreign Affairs (such as DFA Aseana near MOA) to have your NU MOA TOR and Diploma authenticated with an Apostille certificate. Keep certified true copies of your Apostilled records ready for university enrollment and visa filing."
+            },
+            {
+              id: 't-14',
+              text: "Upload all PDF documents and submit the formal application on the DAAD Portal (and directly to the university if applying for EPOS).",
+              tip: "Combine multi-page files into clear, readable PDFs within the portal's file-size limits using descriptive filenames (such as Torda_Leila_CV.pdf and Torda_Leila_TOR.pdf). Aim to submit at least 3 to 5 days before the deadline to account for time-zone differences with Central European Time."
+            },
+            {
+              id: 't-15',
+              text: "Prepare for selection interviews (review motivation letter, HR case examples, and research/career goals in Germany).",
+              tip: "Shortlisted DAAD EPOS and Master's applicants are commonly invited to a 20 to 30 minute online interview. Review your Psychology thesis, prepare concrete examples of HR initiatives you led at work, and articulate clearly why Germany is the right environment for your graduate studies."
+            },
+            {
+              id: 't-16',
+              text: "Upon admission or award letter, schedule a German National Student Visa appointment at the German Embassy in Manila and arrange health insurance and proof of funding.",
+              tip: "Reserve a long-term National Visa (Category D) appointment at the German Embassy in Manila (Makati) as soon as your admission or DAAD Award Letter arrives. If awarded a DAAD scholarship, your official award letter serves as proof of financial means (waiving the blocked account requirement) and typically includes German health insurance coverage."
+            }
+          ]
+        }
+      ];
+
+      // Application State
+      let state = {
+        completed: {},
+        customTasks: [],
+        notes: '',
+        activeFilter: 'all',
+        expandedTips: {}
+      };
+
+      // Safe LocalStorage Helpers
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            state.completed = parsed.completed && typeof parsed.completed === 'object' ? parsed.completed : {};
+            state.customTasks = Array.isArray(parsed.customTasks) ? parsed.customTasks : [];
+            state.notes = typeof parsed.notes === 'string' ? parsed.notes : '';
+          }
+        } catch (err) {
+          console.warn('Unable to read saved checklist state from localStorage:', err);
+        }
+      }
+
+      function saveState() {
+        try {
+          const payload = {
+            completed: state.completed,
+            customTasks: state.customTasks,
+            notes: state.notes
+          };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        } catch (err) {
+          console.warn('Unable to persist checklist state to localStorage:', err);
+        }
+      }
+
+      // Compute total and completed tasks across built-in and custom items
+      function getAllTasks() {
+        const builtIn = PHASES.flatMap((phase) => phase.tasks);
+        return [...builtIn, ...state.customTasks];
+      }
+
+      function updateProgress() {
+        const allTasks = getAllTasks();
+        const total = allTasks.length;
+        const doneCount = allTasks.filter((t) => Boolean(state.completed[t.id])).length;
+        const pct = total === 0 ? 0 : Math.round((doneCount / total) * 100);
+
+        const labelEl = document.getElementById('progress-label');
+        const barEl = document.getElementById('progress-bar');
+
+        if (labelEl) {
+          labelEl.textContent = `${doneCount} of ${total} tasks completed · ${pct}%`;
+        }
+        if (barEl) {
+          barEl.style.width = `${pct}%`;
+        }
+      }
+
+      // Escape HTML to prevent injection from custom tasks
+      function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // Render Checklist Phases & Items
+      function renderChecklist() {
+        const container = document.getElementById('checklist-container');
+        if (!container) return;
+
+        const visiblePhases = state.activeFilter === 'all'
+          ? PHASES
+          : PHASES.filter((p) => p.id === state.activeFilter);
+
+        container.innerHTML = visiblePhases.map((phase) => {
+          const phaseCustomTasks = state.customTasks.filter((ct) => ct.phaseId === phase.id);
+          const phaseTasks = [...phase.tasks, ...phaseCustomTasks];
+          const phaseDone = phaseTasks.filter((t) => Boolean(state.completed[t.id])).length;
+
+          const itemsHTML = phaseTasks.map((task) => {
+            const isChecked = Boolean(state.completed[task.id]);
+            const isExpanded = Boolean(state.expandedTips[task.id]);
+            const isCustom = Boolean(task.isCustom);
+
+            return `
+              <div class="group transition-colors ${isChecked ? 'bg-blush/55' : 'hover:bg-blush/35'} px-2 sm:px-3 py-3.5">
+                <div class="flex items-start gap-3">
+                  <input
+                    id="chk-${escapeHTML(task.id)}"
+                    type="checkbox"
+                    data-task-id="${escapeHTML(task.id)}"
+                    class="tulip-checkbox task-checkbox"
+                    ${isChecked ? 'checked' : ''}
+                  />
+
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-3">
+                      <label
+                        for="chk-${escapeHTML(task.id)}"
+                        class="text-body cursor-pointer select-none transition-colors ${isChecked ? 'line-through text-taupe' : 'text-charcoal'}"
+                      >
+                        ${escapeHTML(task.text)}
+                      </label>
+
+                      <div class="no-print flex items-center gap-2.5 shrink-0 pt-0.5">
+                        ${task.tip ? `
+                          <button
+                            type="button"
+                            data-tip-toggle="${escapeHTML(task.id)}"
+                            aria-expanded="${isExpanded}"
+                            class="tip-toggle-btn text-body text-taupe hover:text-rose underline decoration-hairline hover:decoration-rose underline-offset-4 transition-colors cursor-pointer"
+                          >
+                            ${isExpanded ? 'Hide tip' : 'Details'}
+                          </button>
+                        ` : ''}
+
+                        ${isCustom ? `
+                          <button
+                            type="button"
+                            data-delete-task="${escapeHTML(task.id)}"
+                            aria-label="Remove custom task"
+                            class="text-body text-taupe hover:text-rose transition-colors cursor-pointer"
+                          >
+                            Remove
+                          </button>
+                        ` : ''}
+                      </div>
+                    </div>
+
+                    ${task.tip ? `
+                      <div
+                        id="tip-${escapeHTML(task.id)}"
+                        class="task-tip-panel ${isExpanded ? 'block' : 'hidden'} mt-2.5 pl-3.5 border-l border-rose/50 text-body text-taupe"
+                      >
+                        ${escapeHTML(task.tip)}
+                      </div>
+                    ` : ''}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          return `
+            <div class="py-6">
+              <div class="flex items-baseline justify-between gap-4 mb-3 px-2 sm:px-3">
+                <h2 class="font-serif font-medium text-heading text-charcoal">
+                  <span class="text-sage font-sans font-medium mr-2">Phase ${phase.number}</span>
+                  ${escapeHTML(phase.title)}
+                </h2>
+                <span class="text-body text-taupe tabular-nums shrink-0">${phaseDone}/${phaseTasks.length}</span>
+              </div>
+              <div class="divide-y divide-hairline/70 border-t border-b border-hairline/70">
+                ${itemsHTML}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        updateProgress();
+      }
+
+      // Update active filter tab styling
+      function updateFilterTabs() {
+        const tabs = document.querySelectorAll('.filter-tab');
+        tabs.forEach((tab) => {
+          const filter = tab.getAttribute('data-filter');
+          if (filter === state.activeFilter) {
+            tab.classList.remove('text-taupe', 'border-transparent');
+            tab.classList.add('text-charcoal', 'font-medium', 'border-rose');
+          } else {
+            tab.classList.remove('text-charcoal', 'font-medium', 'border-rose');
+            tab.classList.add('text-taupe', 'border-transparent');
+          }
+        });
+      }
+
+      // Wire up Event Listeners
+      function initEvents() {
+        // Filter Tabs
+        const filterNav = document.getElementById('filter-tabs');
+        if (filterNav) {
+          filterNav.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-tab');
+            if (!btn) return;
+            state.activeFilter = btn.getAttribute('data-filter') || 'all';
+            updateFilterTabs();
+            renderChecklist();
+          });
+        }
+
+        // Checklist Interactions (Checkbox, Tip Toggle, Delete Custom Task)
+        const checklistContainer = document.getElementById('checklist-container');
+        if (checklistContainer) {
+          checklistContainer.addEventListener('change', (e) => {
+            if (e.target.classList.contains('task-checkbox')) {
+              const taskId = e.target.getAttribute('data-task-id');
+              if (!taskId) return;
+              state.completed[taskId] = e.target.checked;
+              saveState();
+              renderChecklist();
+            }
+          });
+
+          checklistContainer.addEventListener('click', (e) => {
+            const tipBtn = e.target.closest('.tip-toggle-btn');
+            if (tipBtn) {
+              const taskId = tipBtn.getAttribute('data-tip-toggle');
+              if (!taskId) return;
+              state.expandedTips[taskId] = !state.expandedTips[taskId];
+              renderChecklist();
+              return;
+            }
+
+            const delBtn = e.target.closest('[data-delete-task]');
+            if (delBtn) {
+              const taskId = delBtn.getAttribute('data-delete-task');
+              state.customTasks = state.customTasks.filter((t) => t.id !== taskId);
+              delete state.completed[taskId];
+              delete state.expandedTips[taskId];
+              saveState();
+              renderChecklist();
+            }
+          });
+        }
+
+        // Add Custom Task Form
+        const customForm = document.getElementById('custom-task-form');
+        const customInput = document.getElementById('custom-task-input');
+        const customPhaseSelect = document.getElementById('custom-task-phase');
+
+        if (customForm && customInput && customPhaseSelect) {
+          customForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = customInput.value.trim();
+            if (!text) return;
+
+            const phaseId = customPhaseSelect.value || 'phase-01';
+            const newTask = {
+              id: 'custom-' + Date.now(),
+              phaseId,
+              text,
+              tip: '',
+              isCustom: true
+            };
+
+            state.customTasks.push(newTask);
+            saveState();
+
+            customInput.value = '';
+            // If user is currently filtered to another phase, switch to 'all' or the chosen phase so they see it immediately
+            if (state.activeFilter !== 'all' && state.activeFilter !== phaseId) {
+              state.activeFilter = phaseId;
+              updateFilterTabs();
+            }
+            renderChecklist();
+          });
+        }
+
+        // Scratchpad Notes Auto-Save
+        const notesArea = document.getElementById('scratchpad-notes');
+        const notesStatus = document.getElementById('notes-status');
+        let noteSaveTimer = null;
+
+        if (notesArea) {
+          notesArea.value = state.notes;
+          notesArea.addEventListener('input', () => {
+            state.notes = notesArea.value;
+            if (notesStatus) notesStatus.textContent = 'Saving...';
+            clearTimeout(noteSaveTimer);
+            noteSaveTimer = setTimeout(() => {
+              saveState();
+              if (notesStatus) notesStatus.textContent = 'Saved on this device';
+            }, 300);
+          });
+        }
+
+        // Print Checklist Button
+        const printBtn = document.getElementById('print-btn');
+        if (printBtn) {
+          printBtn.addEventListener('click', () => {
+            window.print();
+          });
+        }
+
+        // Inline Reset Confirmation Controls
+        const resetTriggerBtn = document.getElementById('reset-trigger-btn');
+        const resetConfirmGroup = document.getElementById('reset-confirm-group');
+        const resetConfirmBtn = document.getElementById('reset-confirm-btn');
+        const resetCancelBtn = document.getElementById('reset-cancel-btn');
+
+        if (resetTriggerBtn && resetConfirmGroup && resetConfirmBtn && resetCancelBtn) {
+          resetTriggerBtn.addEventListener('click', () => {
+            resetTriggerBtn.classList.add('hidden');
+            resetConfirmGroup.classList.remove('hidden');
+            resetConfirmGroup.classList.add('flex');
+          });
+
+          resetCancelBtn.addEventListener('click', () => {
+            resetConfirmGroup.classList.add('hidden');
+            resetConfirmGroup.classList.remove('flex');
+            resetTriggerBtn.classList.remove('hidden');
+          });
+
+          resetConfirmBtn.addEventListener('click', () => {
+            state.completed = {};
+            state.customTasks = [];
+            state.notes = '';
+            state.expandedTips = {};
+            saveState();
+
+            if (notesArea) notesArea.value = '';
+            resetConfirmGroup.classList.add('hidden');
+            resetConfirmGroup.classList.remove('flex');
+            resetTriggerBtn.classList.remove('hidden');
+            renderChecklist();
+          });
+        }
+      }
+
+      // Initialize on DOM ready
+      document.addEventListener('DOMContentLoaded', () => {
+        loadState();
+        updateFilterTabs();
+        renderChecklist();
+        initEvents();
+      });
+    })();
+  </script>
+</body>
+</html>
